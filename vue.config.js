@@ -10,7 +10,6 @@ module.exports = {
       builderOptions: {
         win: {
           icon: path.resolve(__dirname, 'build', 'icons', 'ico_256.png'),
-          target: ['portable'],
           artifactName: "${productName}-Setup-${version}.${ext}"
         }
       }
