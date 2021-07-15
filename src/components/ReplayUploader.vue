@@ -201,7 +201,7 @@ export default class ReplayUploader extends Vue {
     const parseResult = await this.parseReplay(filename)
 
     console.log(parseResult)
-    if (parseResult.status !== 1) {
+    if (!parseResult.success || parseResult.status !== 1) {
       // 해석에 실패했다면 
       return parseResult.status
     }
@@ -214,7 +214,7 @@ export default class ReplayUploader extends Vue {
     this.currentUploadingTarget = filename
 
     return axios
-      .post(this.uploadEndpoint, parseResult)
+      .post(this.uploadEndpoint, parseResult.data)
       .then(({ status }) => {
         if (status >= 200 && status < 300) {
           // 리플레이 목록에서 완료된 파일을 제외합니다
