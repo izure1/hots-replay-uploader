@@ -46,11 +46,6 @@ async function createWindow() {
 
   win.setMenu(null)
 
-  autoUpdater.logger = log
-  autoUpdater.checkForUpdatesAndNotify({ title: '히오스 리플레이 업로더', body: '새로운 버전을 다운받았습니다. 지금 재설치합니다.' })
-    .then(autoUpdater.logger?.info)
-    .catch(autoUpdater.logger?.error)
-
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
     await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string)
@@ -59,6 +54,11 @@ async function createWindow() {
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
+
+    autoUpdater.logger = log
+    autoUpdater.checkForUpdatesAndNotify({ title: '히오스 리플레이 업로더', body: '새로운 버전을 다운받았습니다. 지금 재설치합니다.' })
+      .then(autoUpdater.logger?.info)
+      .catch(autoUpdater.logger?.error)
   }
 }
 
