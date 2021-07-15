@@ -102,7 +102,7 @@ export default class UploadedReplayList extends Vue {
     switch (status) {
       case 1: return '성공'
       case 0: return '지원되지 않음'
-      case -1: return ''
+      case -1: return '파싱 오류'
       case -2: return '알 수 없는 오류'
       case -3: return '지원되지 않는 지도'
       case -4: return '인공지능, 협동전은 지원되지 않음'

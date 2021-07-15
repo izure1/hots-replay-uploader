@@ -135,10 +135,10 @@ export default class ReplayUploader extends Vue {
         resolve(result)
       }
       else {
-        this.$store.dispatch('addUploadedReplay', { path: replay, status: result })
         reject(result)
       }
 
+      this.$store.dispatch('addUploadedReplay', { path: replay, status: result })
       this.$store.dispatch('submitReplay', replay)
     })
 
