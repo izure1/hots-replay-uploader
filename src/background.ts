@@ -1,6 +1,7 @@
 'use strict'
 
 import { app, protocol, BrowserWindow } from 'electron'
+import { autoUpdater } from 'electron-updater'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
@@ -52,6 +53,7 @@ async function createWindow() {
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
+    autoUpdater.checkForUpdatesAndNotify({ title: '히오스 리플레이 업로더', body: '새로운 업데이트를 설치했습니다. 재시작합니다.' })
   }
 }
 

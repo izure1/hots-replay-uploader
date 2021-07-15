@@ -6,6 +6,8 @@
       max-height="60"
       elevation="0"
     >
+      <span class="text-caption mr-3 grey--text">v{{ appVersion }}</span>
+
       <v-btn text @click="openReplayChanger">리플레이 폴더</v-btn>
       <v-btn text @click="openUploaderChanger">업로드 서버</v-btn>
       
@@ -115,6 +117,10 @@ export default class AppComponent extends Vue {
 
   private get app(): App {
     return remote.app
+  }
+
+  private get appVersion(): string {
+    return this.app.getVersion()
   }
 
   private openReplayChanger(): void {
