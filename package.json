@@ -1,24 +1,57 @@
 {
-  "name": "hiosrankuploader",
+  "name": "hots-replay-uploader",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
+  "main": "background.js",
   "dependencies": {
+    "@mdi/font": "^5.9.55",
+    "animejs": "^3.2.1",
+    "axios": "^0.21.1",
+    "chokidar": "^3.5.2",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "fast-glob": "^2.2.7",
+    "hash.js": "^1.1.7",
+    "heroprotocol": "^2.0.2",
+    "hots-parser": "^7.54.2",
+    "vue": "^2.6.12",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^9.1.2",
+    "vuetify": "^2.5.6",
+    "vuex": "^3.4.0",
+    "xregexp": "^4.4.1"
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.4",
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "^4.5.13",
+    "@vue/cli-plugin-vuex": "^4.5.13",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
     "babel-eslint": "^10.1.0",
+    "electron": "^13.0.0",
+    "electron-devtools-installer": "^3.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
+    "typescript": "~4.1.5",
+    "vue-cli-plugin-electron-builder": "~2.1.1",
+    "vue-cli-plugin-vuetify": "~2.4.1",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.7.0"
   },
   "eslintConfig": {
     "root": true,
@@ -27,12 +60,16 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/typescript"
     ],
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "@typescript-eslint/parser"
     },
-    "rules": {}
+    "rules": {
+      "no-undef": "off",
+      "no-control-regex": "off"
+    }
   },
   "browserslist": [
     "> 1%",
