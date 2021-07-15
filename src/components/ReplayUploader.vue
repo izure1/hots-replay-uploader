@@ -146,7 +146,7 @@ export default class ReplayUploader extends Vue {
   }
 
   private watchReplayAdded(): void {
-    this.replayWatcher = chokidar.watch('**/*.StormReplay', { cwd: this.cwd, ignoreInitial: true })
+    this.replayWatcher = chokidar.watch('**/*.StormReplay', { cwd: this.cwd, ignoreInitial: true, interval: 1000 })
     this.replayWatcher.on('add', async (replay) => {
       this.$store.dispatch('changeUploadReplayQueue', path.resolve(this.cwd, replay))
     })
